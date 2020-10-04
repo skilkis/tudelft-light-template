@@ -3,8 +3,9 @@
 A minimal repository containing the TU Delft Light report template which can be
 integrated into other repositories as a submodule. The benefit of using this
 submodule is the ability to receive updates directly. For a full list of
-features as well as examples of this LaTeX template please visit the main
-[`tudelft-light`](https://github.com/skilkis/tudelft-light) repository.
+features, changelog, as well as examples of this LaTeX template please visit
+the main [`tudelft-light`](https://github.com/skilkis/tudelft-light)
+repository.
 
 ## Installation
 
