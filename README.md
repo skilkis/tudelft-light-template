@@ -1,4 +1,4 @@
-# ![LightLogo](/images/header_logo.svg)
+# ![LightLogo](./images/header_logo.svg)
 
 A minimal repository containing the TU Delft Light report template which can be
 integrated into other repositories as a submodule. The benefit of using this
@@ -32,4 +32,11 @@ newest version of the template:
 
 ```bash
 git submodule update --recursive --remote
+```
+
+If you have other submodules in the parent repository and only want to update
+the template, then use the following command:
+
+```bash
+git submodule update --remote tudelft-light
 ```
