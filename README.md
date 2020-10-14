@@ -19,11 +19,18 @@ the parent repository with the following contents:
     branch = master
 ```
 
-Then in the parent repository, the submodule can be initialized with the
-following command:
+The easiest way to generate this file as well as clone the template is to run
+the following command:
 
 ```bash
-git submodule update --init tudelft-light
+git submodule add https://github.com/skilkis/tudelft-light-template.git tudelft-light
+```
+
+If desired, the template can be added into a subdirectory, i.e a `docs/` folder
+as follows:
+
+```bash
+git submodule add https://github.com/skilkis/tudelft-light-template.git docs/tudelft-light
 ```
 
 ## Updating
@@ -40,4 +47,11 @@ the template, then use the following command:
 
 ```bash
 git submodule update --remote tudelft-light
+```
+
+**Note:** If the `docs/` subdirectoy method was used when installing the
+template, the above command will become:
+
+```bash
+git submodule update --remote docs/tudelft-light
 ```
