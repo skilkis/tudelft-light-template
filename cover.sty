@@ -46,6 +46,7 @@
 %   image yshift (length): Shifts the image up. Defaults to 0 pt.
 %   image file (string): Filepath to the image file. Defaults to \relax (None)
 %       which makes the macro use the cover image defined by the theme.
+%   title fontsize (lenght): Sets the main title font size. Defaults to 72 pt.
 %
 % -----------------------------------------------------------------------------
 
@@ -93,7 +94,6 @@
     text width={\paperwidth - 2\@cover@margin},
     minimum width=\paperwidth,
     anchor=north west,
-    font=\tudtitlefamily\fontsize{72}{65}\selectfont,
     outer sep=0pt,
     inner sep=0pt,
     yshift=-1.2\@cover@margin,
@@ -154,6 +154,7 @@
 \define@key{cover}{image xshift}{\setlength{\@coverimage@xshift}{#1}}
 \define@key{cover}{image yshift}{\setlength{\@coverimage@yshift}{#1}}
 \define@key{cover}{image file}{\def\@coverimage@file{#1}}
+\define@key{cover}{title fontsize}{\def\@cover@fontsize{#1}}
 
 % Setting the default arguments so the user does not have to pass any
 \setkeys{cover}{
@@ -164,6 +165,7 @@
     image xshift=0pt,
     image yshift=0pt,
     image file=\relax,  % \relax = None, Default image is specified by theme
+    title fontsize=72pt,
 }
 
 \newcommand*{\makecover}[1][]{
@@ -177,17 +179,20 @@
         \pgfsetlayers{background, assets, main}
 
         \begin{tikzpicture}[remember picture,overlay]
-          
+
             % Main layer contains all text
             \begin{pgfonlayer}{main}
                 \node (title) [
                         title,
                         text=\@cover@textcolor,
+                        font=\tudtitlefamily\fontsize{
+                            \@cover@fontsize
+                        }{0.9\@cover@fontsize}\selectfont,
                     ] at (current page.north west) {
                     \ifx\@cover@title\undefined
-                        \@title
+                        \nohyphens{\@title}
                     \else
-                        \@cover@title
+                        \nohyphens{\@cover@title}
                     \fi
                 };
                 \node (subtitle) [
