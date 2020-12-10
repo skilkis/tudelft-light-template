@@ -103,10 +103,30 @@
 % Renames Nomenclature to List of Symbols
 \renewcommand{\nomname}{List of Symbols}
 
-% Formats the units of the nomenclature
-\newcommand{\nomunit}[1]{%
+
+\newcommand{\nomunit}[2][\relax]{%
+    % Formats the units of the nomenclature
+    %
+    % Usage:
+    %
+    %   \nomunit{\kilogram}
+    %
+    % To have access to the \SI{}{} environment, a number can be passed using
+    % an optional argument as follows:
+    %
+    %   \nomunit[9.81]{\meter\per\second}
+    %
+    % Optional Arguments:
+    %   1 (number): Sets the value of the unit (useful for constants)
+    %
+    % Positional Arguments:
+    %   2 (macro): Set of un-expanded SI macros
     \renewcommand{\nomentryend}{%
-        \hspace*{\fill}\si{#1}%
+        \if#1\relax{}
+            \hspace*{\fill}\si{#2}
+        \else
+            \hspace*{\fill}\SI{#1}{#2}
+        \fi
     }
 }
 
