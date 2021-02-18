@@ -1,18 +1,18 @@
 % -----------------------------------------------------------------------------
 %
 % Copyright (c) 2020. San Kilkis. All rights reserved.
-% 
+%
 % This Source Code Form is subject to the terms of the Mozilla Public
 % License, v. 2.0. If a copy of the MPL was not distributed with this
 % file, You can obtain one at http://mozilla.org/MPL/2.0/
 %
 % --- Package Documentation: --------------------------------------------------
-% 
+%
 % This package redefines the \maketitle macro for creating the inner titlepage.
-% 
+%
 % The basic usage is to define the title and subtitle using the \title and
 % \subtitle macros followed by a call to the \maketitle macro:
-% 
+%
 %   \title{An Important Topic Worth Writing About}
 %   \subtitle{A Very Important Report}
 %   \author{John Doe | 0000001, Jane Doe | 0000002}
@@ -29,10 +29,10 @@
 % -----------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{tudelft-light/title}
+\ProvidesPackage{tudelft-light/tud-title}
 
-\RequirePackage{tudelft-light/cover}
-\RequirePackage{tudelft-light/style}
+\RequirePackage{tudelft-light/tud-cover}
+\RequirePackage{tudelft-light/tud-style}
 
 \newcommand*{\@title@makeplural}[2][\relax]{%
     % Makes the supplied word plural by adding an "s" suffix to it
@@ -44,7 +44,7 @@
     % is given below
     %
     %   \makeplural[\@author@itemslen]{Author}
-    % 
+    %
     % Optional Arguments:
     %   1 (number): Number of items used to conditionally make the word plural
     %
@@ -53,7 +53,7 @@
     %
     % Returns:
     %   (string): The provided string with the suffix "s" applied
-    % 
+    %
     \if #1\relax
         % If no optional argument is provided make it plural
         #2s%

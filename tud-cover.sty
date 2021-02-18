@@ -1,18 +1,18 @@
 % -----------------------------------------------------------------------------
 %
 % Copyright (c) 2020. San Kilkis. All rights reserved.
-% 
+%
 % This Source Code Form is subject to the terms of the Mozilla Public
 % License, v. 2.0. If a copy of the MPL was not distributed with this
 % file, You can obtain one at http://mozilla.org/MPL/2.0/
 %
 % --- Package Documentation: --------------------------------------------------
-% 
+%
 % This package provides the \makecover macro for creating the outer coverpage.
-% 
+%
 % The basic usage is to define the title and subtitle using the \title and
 % \subtitle macros followed by a call to the \makecover macro:
-% 
+%
 %   \title{An Important Topic Worth Writing About}
 %   \subtitle{A Very Important Report}
 %   \makecover
@@ -25,7 +25,7 @@
 %   \subtitle[Different Cover Subtitle]{A Very Important Report}
 %   \makecover
 %   \maketitle
-% 
+%
 % The cover page can be changed from the default dark theme by passing the
 % theme=light keyword argument. The light theme is meant for light background
 % images and will change the white logo and text to black:
@@ -33,14 +33,14 @@
 %   \title{An Important Topic Worth Writing About}
 %   \subtitle{A Very Important Report}
 %   \makecover[theme=light]
-% 
+%
 % Optional Keyword Arguments:
 %   theme (string): Sets the theme of the cover page. Defaults to dark.
 %   fill opacity (number): Sets the opacity of the header fill which can help
 %       to increase the contrast of the title text against certain backgrounds.
 %       Defaults to 0.3.
 %   image scale (number): Scales the background image. Defaults to 1.
-%   image angle (number): Sets the counter-clockwise rotation in degrees 
+%   image angle (number): Sets the counter-clockwise rotation in degrees
 %       of the image. Defaults to 0 (deg).
 %   image xshift (length): Shifts the image toward the right. Defaults to 0 pt.
 %   image yshift (length): Shifts the image up. Defaults to 0 pt.
@@ -51,7 +51,7 @@
 % -----------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{tudelft-light/cover}[2018/02/08 TU Delft Light Report Class]
+\ProvidesPackage{tudelft-light/tud-cover}
 
 \RequirePackage{tikz}
 \RequirePackage{calc}
@@ -59,7 +59,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{fontspec}
 \RequirePackage[us]{datetime}
-\RequirePackage{tudelft-light/style}  % Requires house style fonts and colors
+\RequirePackage{tudelft-light/tud-style}  % Requires house style fonts & colors
 
 \usetikzlibrary{calc, positioning, fit}
 

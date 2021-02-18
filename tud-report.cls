@@ -1,17 +1,17 @@
 % -----------------------------------------------------------------------------
 %
 % Copyright (c) 2020. San Kilkis. All rights reserved.
-% 
+%
 % This Source Code Form is subject to the terms of the Mozilla Public
 % License, v. 2.0. If a copy of the MPL was not distributed with this
 % file, You can obtain one at http://mozilla.org/MPL/2.0/
 %
 % --- Class Documentation: ----------------------------------------------------
-% 
+%
 % This package provides the tudelft-light/report class for use with XeLaTeX.
-% 
+%
 % The document class is based on the report class from the LaTeX Std. Lib.
-% For a full list of available document options refer to: 
+% For a full list of available document options refer to:
 % https://en.wikibooks.org/wiki/LaTeX/Document_Structure
 %
 % Optional Keyword Arguments:
@@ -31,11 +31,11 @@
 % -----------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{tudelft-light/report}[2018/02/08 TU Delft Light Report Class]
+\ProvidesClass{tudelft-light/tud-report}
 
 \RequirePackage{iftex}
 \RequireXeTeX % Raises error if not compiling with XeLaTeX
- 
+
 % --- Class Options: ----------------------------------------------------------
 \RequirePackage{kvoptions}
 
@@ -50,16 +50,15 @@
 % Passing all unspecified options to the report class of the LaTeX Std. Lib.
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOptionKey}{report}}
 \ProcessKeyvalOptions*
-
 \LoadClass{report}
 
 % --- Importing TU Delft Light Packages: --------------------------------------
-\RequirePackage{tudelft-light/packages}
-\RequirePackage{tudelft-light/style}
-\RequirePackage{tudelft-light/setup}
-\RequirePackage{tudelft-light/cover}
-\RequirePackage{tudelft-light/title}
-\RequirePackage{tudelft-light/macros}
+\RequirePackage{tudelft-light/tud-packages}
+\RequirePackage{tudelft-light/tud-style}
+\RequirePackage{tudelft-light/tud-setup}
+\RequirePackage{tudelft-light/tud-cover}
+\RequirePackage{tudelft-light/tud-title}
+\RequirePackage{tudelft-light/tud-macros}
 
 % --- Document Layout & Title Margins: ----------------------------------------
 \titlespacing*{\chapter}{0pt}{-25pt}{10pt}
