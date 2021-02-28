@@ -150,4 +150,5 @@
 
 % --- Biblography Configuration: ----------------------------------------------
 \addbibresource{references.bib} %Bibliography File
-\newcommand{\BibliographyName}{References} %Name of Biblography
+\renewcommand*{\bibfont}{\raggedright} % Remove justification from bib.
+\newcommand{\BibliographyName}{References} % Name of Biblography
