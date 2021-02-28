@@ -149,6 +149,6 @@
 \creflabelformat{equation}{#2\textup{#1}#3}
 
 % --- Biblography Configuration: ----------------------------------------------
-\addbibresource{references.bib} %Bibliography File
+\addbibresource[glob]{*.bib}  % Automatically add any .bib file as a resource
 \renewcommand*{\bibfont}{\raggedright} % Remove justification from bib.
 \newcommand{\BibliographyName}{References} % Name of Biblography
