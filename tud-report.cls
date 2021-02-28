@@ -61,6 +61,10 @@
 \RequirePackage{tudelft-light/tud-macros}
 
 % --- Document Layout & Title Margins: ----------------------------------------
+% Offset margin for binding in twoside mode
+\if@twoside\geometry{inner=8pc,outer=4pc}\else\fi
+
+% Adjust chapter format
 \titlespacing*{\chapter}{0pt}{-25pt}{10pt}
 \definecolor{gray75}{gray}{0}
 \newcommand{\hsp}{\hspace{3pt}}
