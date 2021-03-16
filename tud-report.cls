@@ -21,7 +21,6 @@
 %   To make it easier to navigate the code, several subpackages have been
 %   created which can be summarized as follows:
 %
-%       * packages.sty: Contains all package imports necessary for the class
 %       * style.sty: Contains style definitions such as color and fonts
 %       * setup.sty: Contains macros for document metadata setup
 %       * cover.sty: Contains the \makecover macro for the outer cover page
@@ -52,13 +51,61 @@
 \ProcessKeyvalOptions*
 \LoadClass{report}
 
-% --- Importing TU Delft Light Packages: --------------------------------------
-\RequirePackage{tudelft-light/tud-packages}
-\RequirePackage{tudelft-light/tud-style}
-\RequirePackage{tudelft-light/tud-setup}
-\RequirePackage{tudelft-light/tud-cover}
-\RequirePackage{tudelft-light/tud-title}
-\RequirePackage{tudelft-light/tud-macros}
+% --- Importing 3rd Party Packages: -------------------------------------------
+\def\tud@margin{6pc}
+\def\tud@headheight{14pt}
+\RequirePackage[margin=\tud@margin, headheight=\tud@headheight]{geometry}
+\RequirePackage{calc}
+\RequirePackage{import}
+\RequirePackage{xcolor} % Useful for colored tables!
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage[super]{nth}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{fontspec}
+\RequirePackage{pgfplots}
+\RequirePackage{datatool}
+\RequirePackage{tabularx}
+\RequirePackage{rotating}
+\RequirePackage{pdflscape}
+\RequirePackage{float}
+\RequirePackage{booktabs}
+\RequirePackage{color} % FIXME Find out if this package is redundant
+\RequirePackage{titlesec}
+\RequirePackage{caption}
+\RequirePackage{enumitem}
+\RequirePackage{subcaption}
+\RequirePackage{pdfpages}
+\RequirePackage[hyphens]{url}
+\RequirePackage{hyphenat}
+\RequirePackage{array}
+\RequirePackage{fancyhdr} % Inserts a fancy smancy header into sub-pages
+\RequirePackage[fit, breakall]{truncate} % Used w/ fancyhdr to fix overlap
+\RequirePackage{notoccite}
+\RequirePackage[symbol]{footmisc}
+\RequirePackage{minted}
+\RequirePackage{siunitx}
+\RequirePackage[titletoc]{appendix}
+\RequirePackage[hidelinks, unicode, pdfpagelabels=true]{hyperref}
+\RequirePackage{blindtext} % Useful for debugging
+\RequirePackage{arydshln} % Used for adding dashlines in arrays \hdashline
+\RequirePackage{tablefootnote} % Put footnotes in tables
+\RequirePackage[intoc]{nomencl}
+\RequirePackage[us]{datetime}
+\RequirePackage{xkeyval} % Needed for optional keyword arguments to macros
+\RequirePackage{listofitems} % Allows creation of list from delimited string
+
+% Automated Referencing: WARNING HAS TO BE LOADED AFTER hyperref
+\RequirePackage[capitalise, noabbrev, nameinlink]{cleveref}
+\RequirePackage[%
+    backend=biber,
+    style=numeric,
+    citestyle=numeric,
+    sorting=none
+]{biblatex}
 
 % --- Document Layout & Title Margins: ----------------------------------------
 % Offset margin for binding in twoside mode
@@ -156,3 +203,10 @@
 \addbibresource[glob]{*.bib}  % Automatically add any .bib file as a resource
 \renewcommand*{\bibfont}{\raggedright} % Remove justification from bib.
 \newcommand{\BibliographyName}{References} % Name of Biblography
+
+% --- Importing TU Delft Light Packages: --------------------------------------
+\RequirePackage{tudelft-light/tud-style}
+\RequirePackage{tudelft-light/tud-setup}
+\RequirePackage{tudelft-light/tud-cover}
+\RequirePackage{tudelft-light/tud-title}
+\RequirePackage{tudelft-light/tud-macros}
