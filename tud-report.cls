@@ -224,3 +224,4 @@
 \RequirePackage{tudelft-light/tud-cover}
 \RequirePackage{tudelft-light/tud-title}
 \RequirePackage{tudelft-light/tud-macros}
+\RequirePackage{tudelft-light/tud-environments}
