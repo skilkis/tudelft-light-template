@@ -54,7 +54,6 @@
 % --- Importing 3rd Party Packages: -------------------------------------------
 \def\tud@margin{6pc}
 \def\tud@headheight{14pt}
-\RequirePackage[margin=\tud@margin, headheight=\tud@headheight]{geometry}
 \RequirePackage{calc}
 \RequirePackage{import}
 \RequirePackage{xcolor} % Useful for colored tables!
@@ -108,8 +107,23 @@
 ]{biblatex}
 
 % --- Document Layout & Title Margins: ----------------------------------------
-% Offset margin for binding in twoside mode
-\if@twoside\geometry{inner=8pc,outer=4pc}\else\fi
+% Set default margins conditionally based on the twoside option. This
+% implementation allows options to be later passed to the geometry package with
+% the \PassOptionsToPackage macro and is thus more configurable than hardcoding
+% a \geometry declaration inside the class file.
+\def\tud@margin{6pc}
+\def\tud@headheight{14pt}
+\RequirePackage[
+    \if@twoside
+        margin=\tud@margin,
+        inner=\tud@margin+2pc,
+        outer=\tud@margin-2pc,
+        headheight=\tud@headheight
+    \else
+        margin=\tud@margin,
+        headheight=\tud@headheight
+    \fi
+]{geometry}
 
 % Adjust chapter format
 \titlespacing*{\chapter}{0pt}{-25pt}{10pt}
