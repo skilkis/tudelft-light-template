@@ -146,6 +146,9 @@
 % Bool: True when inmainmatter, defaults to true for compat.
 \newif\if@mainmatter\@mainmattertrue
 
+% Bool: True when in cover/title pages, defaults to false for compat.
+\newif\if@titlepage\@titlepagefalse
+
 \def\mainmatter@pagestyle{
     % Defines the mainmatter page style based on the fancyheader option
     \iftud@fancyheader

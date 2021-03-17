@@ -87,11 +87,13 @@
 }
 
 \renewcommand*{\maketitle}{
-    \newgeometry{margin=\tud@margin} %Change Title-Page Margin Differently
-        \thispagestyle{empty}
-        \renewcommand{\thepage}{Title}
-        \begin{titlepage}
-            \begin{center}
+    \@titlepagetrue
+    % \newgeometry{margin=\tud@margin} %Change Title-Page Margin Differently
+    \let\thepage@old\thepage  % Backup definition of \thepage
+    \renewcommand{\thepage}{Title \Roman{page}} % Change PDF Label to Title I
+    \thispagestyle{empty} % Remove page numbers and fancyheaders
+    \begin{titlepage}
+        \begin{center}
 
             \textsc{\LARGE Delft University of Technology}\\[0.25cm]
 
@@ -105,7 +107,7 @@
                 tudelft-light/images/delft_seal.pdf%
             }\\[1.5cm]
 
-            % Ttitle and subtitle
+            % Title and subtitle
             {\huge \bfseries \@title} \\
             \huge  \@subtitle \\[1.0cm]
 
@@ -129,12 +131,12 @@
                     \large\@abstract
                 \end{minipage}
             \fi
-
             \vfill
-
             \small{\today}
-
         \end{center}
     \end{titlepage}
-    \restoregeometry
+    % \restoregeometry
+    \cleardoublepage
+    \renewcommand{\thepage}{\thepage@old} % Restore \thepage
+    \@titlepagefalse
 }

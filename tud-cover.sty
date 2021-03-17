@@ -170,14 +170,16 @@
 
 \newcommand*{\makecover}[1][]{
     \setkeys{cover}{#1} % Parses user specified optional keyword arguments
-    \begingroup
-        \thispagestyle{empty}
-        \renewcommand{\thepage}{Cover}
+    \@titlepagetrue
+    % Declare layers for TiKz coverpage
+    \pgfdeclarelayer{background}
+    \pgfdeclarelayer{assets}
+    \pgfsetlayers{background, assets, main}
 
-        \pgfdeclarelayer{background}
-        \pgfdeclarelayer{assets}
-        \pgfsetlayers{background, assets, main}
-
+    \let\thepage@old\thepage  % Backup definition of \thepage
+    \renewcommand{\thepage}{Cover \Roman{page}}
+    \thispagestyle{empty} % Remove page numbers from pages
+    \begin{titlepage}
         \begin{tikzpicture}[remember picture,overlay]
 
             % Main layer contains all text
@@ -256,8 +258,9 @@
                     }
                 };
             \end{pgfonlayer}
-
         \end{tikzpicture}
-        \cleardoublepage
-    \endgroup
+    \end{titlepage}
+    \cleardoublepage
+    \renewcommand{\thepage}{\thepage@old} % Restore \thepage
+    \@titlepagefalse
 }
