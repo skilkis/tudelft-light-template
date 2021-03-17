@@ -54,6 +54,7 @@
 % --- Importing 3rd Party Packages: -------------------------------------------
 \def\tud@margin{6pc}
 \def\tud@headheight{14pt}
+\RequirePackage[nottoc]{tocbibind}  % Adds entires like list of figures to ToC
 \RequirePackage{calc}
 \RequirePackage{import}
 \RequirePackage{xcolor} % Useful for colored tables!
@@ -87,7 +88,7 @@
 \RequirePackage[symbol]{footmisc}
 \RequirePackage{minted}
 \RequirePackage{siunitx}
-\RequirePackage[titletoc]{appendix}
+\RequirePackage{appendix}
 \RequirePackage[hidelinks, unicode, pdfpagelabels=true]{hyperref}
 \RequirePackage{blindtext} % Useful for debugging
 \RequirePackage{arydshln} % Used for adding dashlines in arrays \hdashline
