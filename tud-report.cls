@@ -117,8 +117,8 @@
 \RequirePackage[
     \if@twoside
         margin=\tud@margin,
-        inner=\tud@margin+2pc,
-        outer=\tud@margin-2pc,
+        inner=\tud@margin+1pc,
+        outer=\tud@margin-1pc,
         headheight=\tud@headheight
     \else
         margin=\tud@margin,
