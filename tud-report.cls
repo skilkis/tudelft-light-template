@@ -138,6 +138,74 @@
 
 \setlength{\parindent}{0cm} % No indent on paragraphs
 
+% --- Chapter Naming & Numbering Configuration: -------------------------------
+
+% Changing name of Contents to Table of Contents
+\renewcommand{\contentsname}{Table of Contents}
+
+% Bool: True when inmainmatter, defaults to true for compat.
+\newif\if@mainmatter\@mainmattertrue
+
+\def\mainmatter@pagestyle{
+    % Defines the mainmatter page style based on the fancyheader option
+    \iftud@fancyheader
+        \pagestyle{fancytruncated} % Display a fancy header on subsequent pages
+    \else
+        \pagestyle{plain}
+    \fi
+}
+
+\newcommand{\frontmatter}{
+    % Disables chapter numbers and numbers pages with roman numerals
+    %
+    % Usage:
+    %
+    %   \frontmatter
+    %       \include{chapters/preface}
+    \cleardoublepage
+    \@mainmatterfalse
+    \pagenumbering{roman}
+    \pagestyle{plain}
+}
+
+\newcommand{\mainmatter}{
+    % Enables chapter numbers and numbers pages with arabic numerals
+    %
+    % Usage:
+    %
+    %   \mainmatter
+    %       \include{chapters/introduction}
+    \cleardoublepage
+    \@mainmattertrue
+    \pagenumbering{arabic}
+    \mainmatter@pagestyle
+}
+
+\def\@chapter[#1]#2{%
+    % Disables page numbering in front/backmatter (taken from book.cls)
+    \ifnum \c@secnumdepth > \m@ne % Is greater than minus one?
+        \if@mainmatter
+            \refstepcounter{chapter}%
+            \typeout{\@chapapp\space\thechapter.}%
+            \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+        \else
+            \phantomsection
+            \addcontentsline{toc}{chapter}{#1}%
+        \fi
+    \else
+        \addcontentsline{toc}{chapter}{#1}%
+    \fi
+    \chaptermark{#1}%
+    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+    \if@twocolumn
+        \@topnewpage[\@makechapterhead{#2}]%
+    \else
+        \@makechapterhead{#2}%
+        \@afterheading%
+    \fi
+}
+
 % --- Header & Footnote Configuration: ----------------------------------------
 % Uses the truncate package to crop long section and chapter titles
 % Once the specified width is exceeded the title is split, the left
