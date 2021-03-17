@@ -54,6 +54,7 @@
 % --- Importing 3rd Party Packages: -------------------------------------------
 \def\tud@margin{6pc}
 \def\tud@headheight{14pt}
+\RequirePackage{etoolbox}  % Required by automatic removal of references
 \RequirePackage[nottoc]{tocbibind}  % Adds entires like list of figures to ToC
 \RequirePackage{calc}
 \RequirePackage{import}
@@ -237,6 +238,20 @@
     \addcontentsline{toc}{chapter}{#1}%
     \markboth{\MakeUppercase{#1}}{}%
 }
+
+% --- Caption Configuration: --------------------------------------------------
+
+% The code below patches LoF, LoT, and LoL to remove citations
+\let\cite@old\cite
+\pretocmd{\listoffigures}{\def\cite{\ignorespaces\@gobble}}{}{}
+\apptocmd{\listoffigures}{\let\cite\cite@old}{}{}
+
+\pretocmd{\listoftables}{\def\cite{\ignorespaces\@gobble}}{}{}
+\apptocmd{\listoftables}{\let\cite\cite@old}{}{}
+
+\pretocmd{\listoflistings}{\def\cite{\ignorespaces\@gobble}}{}{}
+\apptocmd{\listoflistings}{\let\cite\cite@old}{}{}
+
 % --- Importing TU Delft Light Packages: --------------------------------------
 \RequirePackage{tudelft-light/tud-style}
 \RequirePackage{tudelft-light/tud-setup}
