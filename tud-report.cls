@@ -218,6 +218,24 @@
 \renewcommand*{\bibfont}{\raggedright} % Remove justification from bib.
 \newcommand{\BibliographyName}{References} % Name of Biblography
 
+\defbibheading{bibliography}[\bibname]{
+    % Remove duplication from header when using fancyhdr
+    %
+    % Usage:
+    %   \printbibliography[heading=bibliography]
+    \chapter*{#1}%
+    \markboth{\MakeUppercase{#1}}{}
+}
+
+\defbibheading{bibintoc}[\bibname]{
+    % Remove duplication from header and add bibliography to ToC
+    %
+    % Usage:
+    %   \printbibliography[heading=bibintoc]
+    \chapter*{#1}%
+    \addcontentsline{toc}{chapter}{#1}%
+    \markboth{\MakeUppercase{#1}}{}%
+}
 % --- Importing TU Delft Light Packages: --------------------------------------
 \RequirePackage{tudelft-light/tud-style}
 \RequirePackage{tudelft-light/tud-setup}
