@@ -97,6 +97,7 @@
 \RequirePackage[us]{datetime}
 \RequirePackage{xkeyval} % Needed for optional keyword arguments to macros
 \RequirePackage{listofitems} % Allows creation of list from delimited string
+\RequirePackage[indentfirst=false,font={itshape}]{quoting}
 
 % Automated Referencing: WARNING HAS TO BE LOADED AFTER hyperref
 \RequirePackage[capitalise, noabbrev, nameinlink]{cleveref}
