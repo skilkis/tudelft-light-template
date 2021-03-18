@@ -242,20 +242,68 @@
 }
 
 % --- Header & Footnote Configuration: ----------------------------------------
-% Uses the truncate package to crop long section and chapter titles
-% Once the specified width is exceeded the title is split, the left
-% portion is kept, and `...' dots are appended to the end
-\fancypagestyle{fancytruncated}{%
-    \fancyhead[R]{\itshape\small \truncate{0.47\textwidth} \leftmark}
-    \fancyhead[L]{\itshape\small \truncate{0.47\textwidth} \rightmark}
+\fancypagestyle{fancytruncated}{% Create a new fancyhdr style
+    \if@twoside
+        \fancyhead[LE]{\truncatemark{\leftmark}}\fancyhead[RE]{}
+        \fancyhead[LO]{}\fancyhead[RO]{\truncatemark{\rightmark}}
+    \else
+        \fancyhead[L]{\truncatemark{\leftmark}}
+        \fancyhead[R]{\truncatemark{\rightmark}}
+    \fi
 }
 
+% Display a fancy header on subsequent pages, this is kept for compatibility
+% with old style of declaring the main.tex file without using the \frontmatter
+% & \mainmatter macros
 \iftud@fancyheader
-    \pagestyle{fancytruncated} % Display a fancy header on subsequent pages
+    \pagestyle{fancytruncated}
 \fi
 
-% Footnote style Roman numerals
-\renewcommand{\thefootnote}{\roman{footnote}}
+\renewcommand{\thefootnote}{\roman{footnote}} % Footnote style Roman numerals
+
+\newcommand{\truncatemark}[1]{%
+    % Use the truncate package to crop long section and chapter titles
+    %
+    % Once the specified width is exceeded the title is split, the left
+    % portion is kept, and `...' dots are appended to the end
+    %
+    % Positional Arguments:
+    %   1 (string): Parsed authors of the document with listofnames package
+    %
+    % Returns:
+    %   (str): the truncated string of the input chapter of section title
+    \itshape\small\truncate{0.94\textwidth} #1%
+}
+
+% Overwrite mark command to display chapter number and title on opposite sides
+\renewcommand{\chaptermark}[1]{%
+    \markboth{\MakeUppercase{\@resolvedname\ \thechapter}}{\MakeUppercase{#1}}
+}
+\renewcommand{\sectionmark}[1]{}  % Overwrite prevent sections from displaying
+
+% Wrap appendices environment to switch boolean @appendix to true on entry
+\newif\if@appendix\@appendixfalse  % Defaults to false
+\let\appendices@old\appendices
+\let\endappendices@old\endappendices
+\renewenvironment{appendices}{
+    \@appendixtrue
+    \appendices@old
+}{\@appendixfalse\endappendices@old}
+
+\newcommand{\@resolvedname}{%
+    % Determines the correct chapter\appendix name to return
+    %
+    % For this command to work the appendices must be declared using the
+    % \begin{appendices} environment.
+    %
+    % Returns:
+    %   (str): Correct name to display in the header (i.e. Appendix or Chapter)
+    \if@appendix
+        \appendixname
+    \else
+        \chaptername
+    \fi
+}
 
 % --- Nomenclature Categories and Configuration: ------------------------------
 \makenomenclature
