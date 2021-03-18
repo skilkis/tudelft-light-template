@@ -96,6 +96,7 @@
 
 % Automated Referencing: WARNING HAS TO BE LOADED AFTER hyperref
 \RequirePackage[capitalise, noabbrev, nameinlink]{cleveref}
+\RequirePackage{glossaries}
 \RequirePackage[
     backend=biber,
     style=numeric,
@@ -259,6 +260,7 @@
 
 % --- Nomenclature Categories and Configuration: ------------------------------
 \makenomenclature
+\makeglossaries
 
 \renewcommand\nomgroup[1]{%
     \item[\bfseries
