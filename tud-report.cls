@@ -208,6 +208,43 @@
     \fi
 }
 
+\renewcommand{\cleardoublepage}{
+    % Formats blank pages for the twoside and openright options.
+    %
+    % This is implemented such that if an odd page is encountered the page
+    % proceeds to compile as normal. Otherwise, a blank page is created on the
+    % even page such that the next content page will be odd. Since title pages
+    % define page-styles that use custom PDF labels, a check is also performed
+    % to see if the current even page is within a titlepage environment. This
+    % assumes that the titlepages correctly set the @titlepage to true on entry
+    % and false on exit.
+    \clearpage
+    \if@twoside
+        \ifodd
+            \c@page
+        \else
+            \begingroup
+            \mbox{}
+            \vspace*{\fill}
+                \begin{center}
+                    This page intentionally left blank.
+                \end{center}
+            \vspace{\fill}
+            \if@titlepage
+                \thispagestyle{empty}
+            \else
+                \thispagestyle{plain}
+            \fi
+            \newpage
+            \if@twocolumn
+                \mbox{}
+                \newpage
+            \fi
+            \endgroup
+        \fi
+    \fi
+}
+
 % --- Header & Footnote Configuration: ----------------------------------------
 % Uses the truncate package to crop long section and chapter titles
 % Once the specified width is exceeded the title is split, the left
