@@ -359,6 +359,19 @@
 \pretocmd{\listoflistings}{\def\cite{\ignorespaces\@gobble}}{}{}
 \apptocmd{\listoflistings}{\let\cite\cite@old}{}{}
 
+% --- Listing Configuration: ----------------------------------------------
+
+% Change listing numbering to include chapter number (i.e. Listing 1.1)
+\renewcommand*{\thelisting}{\thechapter.\arabic{listing}}
+\@addtoreset{listing}{chapter}
+
+% Correcting entry of listings in ToC
+\renewcommand{\listoflistings}{%
+  \cleardoublepage
+  \listof{listing}{\listoflistingscaption}%
+  \addcontentsline{toc}{chapter}{\listoflistingscaption}%
+}
+
 % --- Importing TU Delft Light Packages: --------------------------------------
 \RequirePackage{tudelft-light/tud-style}
 \RequirePackage{tudelft-light/tud-setup}
