@@ -85,7 +85,6 @@
 \RequirePackage{array}
 \RequirePackage{fancyhdr} % Inserts a fancy smancy header into sub-pages
 \RequirePackage[fit, breakall]{truncate} % Used w/ fancyhdr to fix overlap
-\RequirePackage{notoccite}
 \RequirePackage[symbol]{footmisc}
 \RequirePackage{minted}
 \RequirePackage{siunitx}
