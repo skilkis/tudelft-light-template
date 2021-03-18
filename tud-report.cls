@@ -299,6 +299,57 @@
     }
 }
 
+% TODO https://tex.stackexchange.com/questions/386666/how-can-i-get-the-first-use-of-a-glossary-to-show-the-full-description
+\renewcommand{\glssymbolsgroupname}{List of Symbols}
+
+\glsaddkey*
+    {unit}% key
+    {\glsentrytext{\glslabel}-}% default value
+    {\glsentryunit}% command analogous to \glsentrytext
+    {\Glsentryunit}% command analogous to \Glsentrytext
+    {\glsunit}% command analogous to \glstext
+    {\Glsunit}% command analogous to \Glstext
+    {\GLSunit}% command analogous to \GLStext
+
+\renewcommand*{\newsymbol}[6][]{%
+    \newglossaryentry{#2}{name={#3},% symbol
+     first={#6 (#3)},% description (symbol)
+     symbolvalue={#5},
+     unit={#4},
+     type={symbols},
+     description={#6},#1}%
+}
+
+\newglossaryentry{greek}{
+    name={Greek Symbols},
+    description={\nopostdesc}
+}
+\newglossaryentry{roman}{
+    name={Roman Symbols},
+    description={\nopostdesc}
+}
+
+\newglossarystyle{3colsymbols}{%
+% put the glossary in the itemize environment:
+\renewenvironment{theglossary}{\setlength{\LTleft}{0pt}\begin{longtable}{l>{\raggedright}p{.4\textwidth}>{\raggedleft}p{0.3\textwidth}r}}{\end{longtable}}%
+% have nothing after \begin{theglossary}:
+\renewcommand*{\glossaryheader}{%  Change the table header
+   Sign &  Description & Value & Unit \\
+  \endhead}
+% have nothing between glossary groups:
+\renewcommand*{\glsgroupheading}[1]{}%
+\renewcommand*{\glsgroupskip}{}%
+% set how each entry should appear:
+\renewcommand*{\glossentry}[2]{%  Change the displayed items
+  \glstarget{##1}{\glossentryname{##1}} %
+  & \glossentrydesc{##1}% Description
+  & \glssymbolvalue{##1}
+  & \glsunit{##1}%
+  \tabularnewline
+}
+}
+
+
 % --- Plot Configuration: -----------------------------------------------------
 \pgfplotsset{compat=1.16} % Setting compatibility for PGF Plots
 
