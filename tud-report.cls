@@ -89,7 +89,7 @@
 \RequirePackage[symbol]{footmisc}
 \RequirePackage{minted}
 \RequirePackage{siunitx}
-\RequirePackage{appendix}
+\RequirePackage[titletoc]{appendix}
 \RequirePackage[hidelinks, unicode, pdfpagelabels=true]{hyperref}
 \RequirePackage{blindtext} % Useful for debugging
 \RequirePackage{arydshln} % Used for adding dashlines in arrays \hdashline
