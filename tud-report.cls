@@ -68,18 +68,13 @@
 \RequirePackage{tikz}
 \RequirePackage{fontspec}
 \RequirePackage{pgfplots}
-\RequirePackage{datatool}
 \RequirePackage{tabularx}
-\RequirePackage{rotating}
-\RequirePackage{pdflscape}
 \RequirePackage{float}
 \RequirePackage{booktabs}
-\RequirePackage{color} % FIXME Find out if this package is redundant
 \RequirePackage{titlesec}
 \RequirePackage{caption}
-\RequirePackage{enumitem}
+\RequirePackage{enumitem}  % Useful to create customized lists
 \RequirePackage{subcaption}
-\RequirePackage{pdfpages}
 \RequirePackage[hyphens]{url}
 \RequirePackage{hyphenat}
 \RequirePackage{array}
@@ -101,7 +96,7 @@
 
 % Automated Referencing: WARNING HAS TO BE LOADED AFTER hyperref
 \RequirePackage[capitalise, noabbrev, nameinlink]{cleveref}
-\RequirePackage[%
+\RequirePackage[
     backend=biber,
     style=numeric,
     citestyle=numeric,
