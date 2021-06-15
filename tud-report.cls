@@ -82,7 +82,7 @@
 \RequirePackage[fit, breakall]{truncate} % Used w/ fancyhdr to fix overlap
 \RequirePackage[symbol]{footmisc}
 \RequirePackage{minted}
-\RequirePackage{siunitx}
+\RequirePackage[binary-units]{siunitx}
 \RequirePackage[titletoc]{appendix}
 \RequirePackage[hidelinks, unicode, pdfpagelabels=true]{hyperref}
 \RequirePackage{blindtext} % Useful for debugging
