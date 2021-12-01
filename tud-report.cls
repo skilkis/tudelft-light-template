@@ -65,6 +65,7 @@
 \RequirePackage{mathtools}
 \RequirePackage[super]{nth}
 \RequirePackage{graphicx}
+\RequirePackage{rotating}
 \RequirePackage{tikz}
 \RequirePackage{fontspec}
 \RequirePackage{pgfplots}
